@@ -7,4 +7,8 @@ start a webserver in the repo directory, easy to use python:
 
 python -m SimpleHTTPServer
 
-then select "project_1.html" to load!
+In a browser, navigate to the server:
+
+http://localhost:8000
+
+then click the link "project_1.html" in your browser to load!

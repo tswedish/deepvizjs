@@ -497,7 +497,12 @@ DeepViz.prototype.updateVis = function(args)	{
 };
 
 DeepViz.prototype.loadData = function(data_file_path,model,update)  {
+    this.clear()
     d3.json(data_file_path, function(data) {
     	model(data);
     });
+};
+
+DeepViz.prototype.clear = function(args)	{
+	this.vis_buffer = [];
 };

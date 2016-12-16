@@ -151,7 +151,7 @@ var consumer = function(data)	{
 	dv.add(dv.GridEpisodeRenderer(svg,dv.filter(data,'memory'),[300,32]));
 
 	dv.updateVis(0);
-
+	frame = 30;
 }
 
 dv.loadData("example_state3.json",consumer)

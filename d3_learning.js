@@ -55,6 +55,21 @@ svg.append("text")
 		.attr("font-family", "sans-serif")
 		.attr("font-size", "20px");
 
+var w_indicator = svg.append("rect")
+		.attr("x",100)
+		.attr("y",320)
+		.attr("width",20)
+		.attr("height",200)
+		.attr("stroke","black")
+		.attr("fill","none")
+var r_indicator = svg.append("rect")
+		.attr("x",100)
+		.attr("y",560)
+		.attr("width",20)
+		.attr("height",620)
+		.attr("stroke","black")
+		.attr("fill","none")
+
 var consumer = function(data)	{
 	dv.mydata = data; // for debug, not necessary
 
@@ -143,14 +158,23 @@ dv.loadData("example_state3.json",consumer)
 
 // controller functions
 frame = 30
+var tempScrollTop = $(window).scrollTop();
 $('#prev').on('click', function (e) {
-		frame = ((frame-1)%30 + 30)
+		tempScrollTop = $(window).scrollTop();
+		frame = ((frame-1)%30 + 30);
+		w_indicator.attr("x",100+20*(frame-30));
+		r_indicator.attr("x",100+20*(frame-30));
   	dv.updateVis(frame-30);
-     $('#frame').text('Frame: '+(frame-29))
+    $('#frame').text('Frame: '+(frame-29))
+		$(window).scrollTop(tempScrollTop);
 })
 
 $('#next').on('click', function (e) {
-		frame = ((frame+1)%30 + 30)
+		tempScrollTop = $(window).scrollTop();
+		frame = ((frame+1)%30 + 30);
+		w_indicator.attr("x",100+20*(frame-30));
+		r_indicator.attr("x",100+20*(frame-30));
   	dv.updateVis(frame-30);
      $('#frame').text('Frame: '+(frame-29))
+		$(window).scrollTop(tempScrollTop);
 })
